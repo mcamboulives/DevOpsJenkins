@@ -8,7 +8,7 @@ public final class App {
     /** Create app main.
     * @param args arguments list.
     */
-    private static void main(final String[] args) {
+    public static void main(final String[] args) {
         System.out.println("Hello World!");
     }
 }

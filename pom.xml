@@ -29,6 +29,16 @@
   </dependencies>
   
   <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.20.1</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -50,6 +60,7 @@
         </configuration>
     </plugin>
     
+    <!-- "default" zip : correspond au jar -->
     <plugin>
       <artifactId>maven-assembly-plugin</artifactId>
       <configuration>
@@ -61,19 +72,39 @@
             <mainClass>fr.ut2j.m1ice.ci.tpmaven.App</mainClass>
           </manifest>
         </archive>
+        <executions>
+            <execution>
+                <id>make-assembly</id>
+                <phase>package</phase>
+                <goals>
+                    <goal>single</goal>
+                </goals>
+            </execution>
+        </executions>
       </configuration>
     </plugin>
-    </plugins>
     
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.20.1</version>
-        </plugin>
-      </plugins>
-    </pluginManagement>
+    <!-- "custom" zip : correspond aux sources-->
+    <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.1.0</version>
+        <configuration>
+            <descriptors>
+                <descriptor>src/assembly/assemblySrc.xml</descriptor>
+            </descriptors>
+            <finalName>TPMaven-${project.version}</finalName>
+        </configuration>
+        <executions>
+            <execution>
+                <id>make-assembly</id>
+                <phase>package</phase>
+                <goals>
+                    <goal>single</goal>
+                </goals>
+            </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
   
   <reporting>

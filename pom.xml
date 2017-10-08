@@ -38,18 +38,8 @@
         </plugin>
       </plugins>
     </pluginManagement>
-    
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <!-- or whatever version you use -->
-          <source>1.7</source>
-          <target>1.7</target>
-        </configuration>
-      </plugin>
       
+    <plugins>
       <plugin> 
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId> 
@@ -90,7 +80,7 @@
         <version>3.1.0</version>
         <configuration>
             <descriptors>
-                <descriptor>src/assembly/assemblySrc.xml</descriptor>
+                <descriptor>sources</descriptor>
             </descriptors>
             <finalName>TPMaven-${project.version}</finalName>
         </configuration>

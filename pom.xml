@@ -50,10 +50,10 @@
         </configuration>
     </plugin>
     
-    <!-- "default" zip : correspond au jar -->
     <plugin>
       <artifactId>maven-assembly-plugin</artifactId>
       <configuration>
+    <!-- "default" zip : correspond au jar -->
         <descriptorRefs>
           <descriptorRef>jar-with-dependencies</descriptorRef>
         </descriptorRefs>
@@ -62,6 +62,11 @@
             <mainClass>fr.ut2j.m1ice.ci.tpmaven.App</mainClass>
           </manifest>
         </archive>
+    <!-- "custom" zip : correspond aux sources-->
+        <descriptors>
+                <descriptor>src/assembly/assemblySrc.xml</descriptor>
+            </descriptors>
+            <finalName>TPMaven-${project.version}</finalName>
         <executions>
             <execution>
                 <id>make-assembly</id>
@@ -73,27 +78,6 @@
         </executions>
       </configuration>
     </plugin>
-    
-    <!-- "custom" zip : correspond aux sources-->
-    <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <version>3.1.0</version>
-        <configuration>
-            <descriptors>
-                <descriptor>sources</descriptor>
-            </descriptors>
-            <finalName>TPMaven-${project.version}</finalName>
-        </configuration>
-        <executions>
-            <execution>
-                <id>make-assembly</id>
-                <phase>package</phase>
-                <goals>
-                    <goal>single</goal>
-                </goals>
-            </execution>
-        </executions>
-      </plugin>
     </plugins>
   </build>
   

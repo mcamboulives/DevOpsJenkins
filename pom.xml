@@ -53,7 +53,6 @@
     <plugin>
       <artifactId>maven-assembly-plugin</artifactId>
       <configuration>
-    <!-- "default" zip : correspond au jar -->
         <descriptorRefs>
           <descriptorRef>jar-with-dependencies</descriptorRef>
         </descriptorRefs>
@@ -64,7 +63,15 @@
         </archive>
         
         <finalName>TPMaven-${project.version}</finalName>
-        <executions>
+        
+        <descriptors>
+        	<!-- "custom" zip : contient toutes les sources -->
+            <descriptor>src/assembly/assemblySrc.xml</descriptor>
+            <!-- "jar" zip : contient le jar-with-dependencies -->
+            <descriptor>src/assembly/assemblyJar.xml</descriptor>
+        </descriptors>
+      </configuration>
+      <executions>
             <execution>
                 <id>make-assembly</id>
                 <phase>package</phase>
@@ -73,12 +80,6 @@
                 </goals>
             </execution>
         </executions>
-            <!-- "custom" zip : correspond aux sources-->
-        <descriptors>
-            <descriptor>src/assembly/assemblySrc.xml</descriptor>
-            <descriptor>src/assembly/assemblyJar.xml</descriptor>
-        </descriptors>
-      </configuration>
     </plugin>
     </plugins>
   </build>

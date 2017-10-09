@@ -7,13 +7,12 @@
   </formats>
   <fileSets>
     <fileSet>
-      <directory>/</directory>
+      <directory>${project.basedir}/src</directory>
       <includes>
-		<include>src/</include>
-        <include>*.txt</include>
+        <include>**</include>
         <include>pom.xml</include>
       </includes>
-      <useDefaultExcludes>true</useDefaultExcludes>
+      <useDefaultExcludes>false</useDefaultExcludes>
     </fileSet>
   </fileSets>
 </assembly>

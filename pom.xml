@@ -62,11 +62,8 @@
             <mainClass>fr.ut2j.m1ice.ci.tpmaven.App</mainClass>
           </manifest>
         </archive>
-    <!-- "custom" zip : correspond aux sources-->
-        <descriptors>
-                <descriptor>src/assembly/assemblySrc.xml</descriptor>
-            </descriptors>
-            <finalName>TPMaven-${project.version}</finalName>
+        
+        <finalName>TPMaven-${project.version}</finalName>
         <executions>
             <execution>
                 <id>make-assembly</id>
@@ -76,6 +73,11 @@
                 </goals>
             </execution>
         </executions>
+            <!-- "custom" zip : correspond aux sources-->
+        <descriptors>
+            <descriptor>src/assembly/assemblySrc.xml</descriptor>
+            <descriptor>src/assembly/assemblyJar.xml</descriptor>
+        </descriptors>
       </configuration>
     </plugin>
     </plugins>
